@@ -6,40 +6,31 @@
     <title>Angel One லைவ் ஸ்டாக் டாஷ்போர்ட் - B/S டார்கெட்</title>
     <style>
         :root {
-            --bg-color: #f4f6f9;
-            --card-bg: #ffffff;
-            --text-color: #333;
-            --green: #00c853;
-            --red: #ff3d00;
-            --blue: #2962ff;
-            --highlight: #fff9c4;
-            --border-color: #ddd;
-            --yellow: #ffd600;
-            --purple: #9c27b0;
-            --orange: #ff9800;
-
-            /* Google Sheet style colors */
-            --sheet-header-red: #cc0000;
-            --sheet-header-orange: #e69138;
-            --sheet-header-darkgreen: #274e13;
-            --sheet-cell-green: #38761d;
-            --sheet-cell-lightgreen: #6aa84f;
-            --sheet-cell-red: #cc0000;
-            --sheet-cell-lightred: #e06666;
-            --sheet-cell-dark: #1a2a3a;
-            --sheet-cell-navy: #274e6c;
-            --sheet-text-white: #ffffff;
+            --bg-color: #070b14;
+            --card-bg: #0f1729;
+            --card-bg2: #131d33;
+            --text-color: #e6edf7;
+            --muted: #8da2c0;
+            --green: #22e07a;
+            --red: #ff4d6a;
+            --blue: #4f8cff;
+            --highlight: #3b2f08;
+            --border-color: #1e2a44;
+            --yellow: #ffd23f;
+            --purple: #b27cff;
+            --orange: #ffb020;
+            --cyan: #22d3ee;
+            --row-a: #0c1322;
+            --row-b: #0f192d;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
+            background: radial-gradient(1200px 500px at 10% -10%, #11214a 0%, transparent 60%), var(--bg-color);
             color: var(--text-color);
             font-size: 11px;
             line-height: 1.3;
@@ -49,180 +40,197 @@
             flex-direction: column;
         }
 
+        ::-webkit-scrollbar { width: 9px; height: 9px; }
+        ::-webkit-scrollbar-track { background: #0a1020; }
+        ::-webkit-scrollbar-thumb { background: #2a3a5c; border-radius: 6px; }
+        input[type=checkbox] { accent-color: #4f8cff; width: 14px; height: 14px; cursor: pointer; }
+
         .dashboard-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(135deg, var(--card-bg), #f8f9fa);
-            padding: 8px 12px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #10204a, #0f1729 60%, #1a1140);
+            padding: 10px 14px;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.5);
+            border-bottom: 2px solid #4f8cff;
             flex-shrink: 0;
         }
-        .header-title h2 { 
-            margin: 0; 
-            font-size: 16px; 
-            color: var(--blue); 
+        .header-title h2 {
+            margin: 0;
+            font-size: 17px;
             white-space: nowrap;
+            background: linear-gradient(90deg, #6aa5ff, #22d3ee, #22e07a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .header-time { 
-            font-size: 12px; 
-            font-weight: bold; 
-            color: #555;
-            background: #f0f0f0;
-            padding: 4px 8px;
-            border-radius: 4px;
+        .header-time {
+            font-size: 13px;
+            font-weight: bold;
+            color: #ffd23f;
+            background: #1a2340;
+            border: 1px solid #ffd23f55;
+            padding: 4px 10px;
+            border-radius: 6px;
             white-space: nowrap;
+            letter-spacing: 1px;
         }
 
         .top-controls {
             display: flex;
             gap: 8px;
             padding: 8px 12px;
-            background: white;
+            background: #0b1120;
             border-bottom: 1px solid var(--border-color);
             flex-shrink: 0;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .search-box {
             flex: 1;
-            padding: 6px 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 11px;
-            background: white;
+            min-width: 140px;
+            padding: 7px 12px;
+            border: 1px solid #2a3a5c;
+            border-radius: 6px;
+            font-size: 12px;
+            background: #0a0f1d;
+            color: #fff;
         }
+        .search-box::placeholder, .price-input::placeholder { color: #6f84a6; }
         .search-box:focus {
             outline: none;
             border-color: var(--blue);
-            box-shadow: 0 0 0 2px rgba(41, 98, 255, 0.1);
+            box-shadow: 0 0 0 2px rgba(79, 140, 255, 0.25);
         }
 
         .price-filter-box {
             display: flex;
             align-items: center;
             gap: 4px;
-            background: #eef2f7;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
+            background: #111a30;
+            border: 1px solid #2a3a5c;
+            border-radius: 6px;
             padding: 2px 6px;
         }
         .price-input {
             width: 70px;
             padding: 5px 6px;
-            border: 1px solid var(--border-color);
+            border: 1px solid #2a3a5c;
             border-radius: 4px;
             font-size: 11px;
+            background: #0a0f1d;
+            color: #fff;
         }
-        .price-input:focus {
-            outline: none;
-            border-color: var(--blue);
-        }
-        .price-filter-sep {
-            color: #888;
-            font-size: 11px;
-        }
+        .price-input:focus { outline: none; border-color: var(--blue); }
+        .price-filter-sep { color: var(--muted); font-size: 11px; }
         .price-filter-box .btn-filter,
-        .price-filter-box .btn-clear {
-            padding: 5px 7px;
-        }
+        .price-filter-box .btn-clear { padding: 5px 7px; }
         .price-filter-active {
-            background: #d7e8ff !important;
+            background: #12305f !important;
             border-color: var(--blue) !important;
         }
 
-        .quick-filters {
-            display: flex;
-            gap: 4px;
-        }
+        .quick-filters { display: flex; gap: 4px; }
         .quick-filter-btn {
-            padding: 4px 8px;
-            background: #e9ecef;
-            border: 1px solid #dee2e6;
-            border-radius: 4px;
+            padding: 5px 10px;
+            background: #16213b;
+            border: 1px solid #2a3a5c;
+            color: #c4d2ea;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 10px;
+            font-size: 11px;
             white-space: nowrap;
+            font-weight: 600;
         }
+        .quick-filter-btn:nth-child(2) { border-color: #22e07a66; color: #3dff9a; }
+        .quick-filter-btn:nth-child(3) { border-color: #ff4d6a66; color: #ff7088; }
+        .quick-filter-btn:nth-child(4) { border-color: #22d3ee66; color: #5fe3f7; }
         .quick-filter-btn.active {
-            background: var(--blue);
+            background: linear-gradient(135deg, #2f6bff, #4f8cff);
             color: white;
-            border-color: var(--blue);
+            border-color: #6aa5ff;
+            box-shadow: 0 0 10px rgba(79,140,255,0.5);
         }
 
         button {
-            padding: 4px 8px; 
-            border: none; 
-            border-radius: 4px; 
+            padding: 6px 11px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 10px; 
-            font-weight: 600; 
+            font-size: 11px;
+            font-weight: 700;
             color: white;
             transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 3px;
+            gap: 4px;
             white-space: nowrap;
         }
-        button:hover { opacity: 0.9; }
-        button:active { transform: scale(0.98); }
-        .btn-refresh { background-color: var(--blue); }
-        .btn-print { background-color: #666; }
-        .btn-whatsapp { background-color: #25D366; }
-        .btn-selected { background-color: var(--purple); }
-        .btn-clear { background-color: #f44336; }
-        .btn-filter { background-color: #4CAF50; }
-        .btn-buy-whatsapp { background-color: var(--green); }
-        .btn-sell-whatsapp { background-color: var(--red); }
-        .btn-view-toggle { background-color: var(--orange); }
-        .autoOff { background-color: #9e9e9e !important; }
+        button:hover { filter: brightness(1.15); }
+        button:active { transform: scale(0.97); }
+        .btn-refresh { background: linear-gradient(135deg, #2f6bff, #4f8cff); }
+        .btn-print { background: #566179; }
+        .btn-whatsapp { background: linear-gradient(135deg, #159a4a, #25D366); }
+        .btn-selected { background: linear-gradient(135deg, #7a3ff0, #b27cff); }
+        .btn-clear { background: linear-gradient(135deg, #d63048, #ff4d6a); }
+        .btn-filter { background: linear-gradient(135deg, #12a85a, #22e07a); color: #04210f; }
+        .btn-buy-whatsapp { background: linear-gradient(135deg, #0f9a4d, #22e07a); color: #04210f; }
+        .btn-sell-whatsapp { background: linear-gradient(135deg, #d63048, #ff4d6a); }
+        .btn-view-toggle { background: linear-gradient(135deg, #d98400, #ffb020); color: #2a1800; }
+        .btn-view { background: linear-gradient(135deg, #0aa5c0, #22d3ee); color: #03252d; }
+        #autoToggleBtn { background: linear-gradient(135deg, #12a85a, #22e07a); color: #04210f; }
+        .btn-setup { background: linear-gradient(135deg, #7a3ff0, #b27cff); color: #fff; }
+        .autoOff { background: #566179 !important; color: #fff !important; }
 
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 6px;
-            padding: 8px 12px;
-            background: white;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 8px;
+            padding: 10px 12px;
+            background: #0b1120;
             border-bottom: 1px solid var(--border-color);
             flex-shrink: 0;
         }
 
         .stat-card {
-            background: var(--card-bg);
-            padding: 8px;
-            border-radius: 5px;
+            --c: #4f8cff;
+            background: linear-gradient(160deg, color-mix(in srgb, var(--c) 22%, #0f1729), #0f1729 70%);
+            padding: 9px 8px;
+            border-radius: 8px;
             text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
             cursor: pointer;
-            border: 2px solid transparent;
+            border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+            border-top: 3px solid var(--c);
             transition: all 0.2s ease;
         }
-        .stat-card:hover { 
-            transform: translateY(-1px); 
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        #card-total { --c: #4f8cff; }
+        #card-buy { --c: #22e07a; }
+        #card-sell { --c: #ff4d6a; }
+        #card-gainers { --c: #22d3ee; }
+        #card-losers { --c: #ffb020; }
+        #card-selected { --c: #b27cff; }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 5px 14px rgba(0,0,0,0.5); }
+        .stat-card.active {
+            border-color: var(--c);
+            box-shadow: 0 0 0 1px var(--c), 0 0 16px color-mix(in srgb, var(--c) 55%, transparent);
         }
-        .stat-card.active { 
-            border-color: var(--blue); 
-            background-color: #e3f2fd; 
-        }
-        .stat-card h3 { 
-            margin: 0 0 3px 0; 
-            font-size: 9px; 
-            color: #666; 
-            text-transform: uppercase;
+        .stat-card h3 {
+            margin: 0 0 4px 0;
+            font-size: 10px;
+            color: #b9c8e0;
             letter-spacing: 0.3px;
         }
-        .stat-card .value { 
-            font-size: 14px; 
-            font-weight: bold; 
-            color: var(--text-color); 
-        }
+        .stat-card .value { font-size: 20px; font-weight: 800; color: #fff; }
         .text-green { color: var(--green) !important; }
         .text-red { color: var(--red) !important; }
         .text-blue { color: var(--blue) !important; }
         .text-yellow { color: var(--yellow) !important; }
         .text-purple { color: var(--purple) !important; }
         .text-orange { color: var(--orange) !important; }
+        #card-gainers .value { color: #22d3ee !important; }
+        #card-losers .value { color: #ffb020 !important; }
 
         .main-container {
             display: flex;
@@ -232,20 +240,15 @@
             padding: 8px;
         }
 
-        .table-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-        }
+        .table-section { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 
         .table-wrapper {
             background: var(--card-bg);
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
             overflow-x: auto;
             flex: 1;
-            border: 1px solid var(--border-color);
+            border: 1px solid #243455;
             display: flex;
             flex-direction: column;
         }
@@ -260,117 +263,140 @@
 
         th, td {
             padding: 4px 3px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid #18243d;
             text-align: center;
-            height: 26px;
+            height: 30px;
             overflow: hidden;
             text-overflow: ellipsis;
             font-size: 13px;
         }
 
         th {
-            background-color: var(--sheet-header-darkgreen);
-            color: white;
-            font-weight: 600;
+            background-color: #16223d;
+            color: #cfe0ff;
+            font-weight: 700;
             position: sticky;
             top: 0;
             z-index: 10;
             text-align: center;
-            font-size: 10px;
-            padding: 6px 3px;
+            font-size: 11px;
+            padding: 8px 3px;
+            border-bottom: 3px solid #4f8cff;
         }
 
-        /* Header color bands to mirror the Google Sheet layout */
-        th.col-check, th.col-orderbuy, th.col-ordersell { background-color: var(--sheet-header-red); }
-        th.col-btarget, th.col-starget, th.col-gain, th.col-stock { background-color: var(--sheet-header-orange); }
-        th.col-close, th.col-open, th.col-pcng, th.col-mcng,
-        th.col-52high, th.col-52hbal, th.col-52low, th.col-52lbal { background-color: var(--sheet-header-orange); }
+        /* colorful header groups */
+        th.col-check   { background: #1b2748; color: #cfe0ff; border-bottom-color: #4f8cff; }
+        th.col-stock   { background: #14306b; color: #9cc2ff; border-bottom-color: #4f8cff; }
+        th.col-price   { background: #1a2e5a; color: #ffffff; border-bottom-color: #ffffff; }
+        th.col-btarget { background: #0f3d2a; color: #5dffa5; border-bottom-color: #22e07a; }
+        th.col-starget { background: #4a1523; color: #ff8aa0; border-bottom-color: #ff4d6a; }
+        th.col-change, th.col-percent { background: #2c1a52; color: #cfa8ff; border-bottom-color: #b27cff; }
+        th.col-low, th.col-diff { background: #0b3a45; color: #6fe6f8; border-bottom-color: #22d3ee; }
+        th.col-high    { background: #4a3000; color: #ffc766; border-bottom-color: #ffb020; }
+        th.col-volume  { background: #4a3b00; color: #ffe27a; border-bottom-color: #ffd23f; }
+        th.col-close, th.col-open { background: #263049; color: #c4d2ea; border-bottom-color: #8da2c0; }
+        th.col-52high  { background: #4a1523; color: #ff8aa0; border-bottom-color: #ff4d6a; }
+        th.col-52low   { background: #0f3d2a; color: #5dffa5; border-bottom-color: #22e07a; }
 
-        .col-check { width: 26px; }
-        .col-orderbuy { width: 45px; }
-        .col-ordersell { width: 45px; }
-        .col-stock { width: 82px; text-align: left; }
-        .col-price { width: 52px; }
-        .col-btarget { width: 52px; }
-        .col-starget { width: 52px; }
-        .col-gain { width: 42px; }
-        .col-change { width: 46px; }
-        .col-percent { width: 42px; }
-        .col-low { width: 46px; }
-        .col-diff { width: 40px; }
-        .col-high { width: 46px; }
-        .col-volume { width: 62px; }
-        .col-close { width: 48px; }
-        .col-open { width: 48px; }
-        .col-pcng { width: 42px; }
-        .col-mcng { width: 42px; }
-        .col-52high { width: 52px; }
-        .col-52hbal { width: 48px; }
-        .col-52low { width: 52px; }
-        .col-52lbal { width: 48px; }
+        .col-check { width: 30px; }
+        .col-stock { width: 100px; text-align: left; }
+        .col-price { width: 66px; }
+        .col-btarget { width: 62px; }
+        .col-starget { width: 62px; }
+        .col-change { width: 56px; }
+        .col-percent { width: 70px; }
+        .col-low { width: 56px; }
+        .col-diff { width: 50px; }
+        .col-high { width: 56px; }
+        .col-volume { width: 66px; }
+        .col-close { width: 56px; }
+        .col-open { width: 56px; }
+        .col-52high { width: 58px; }
+        .col-52low { width: 58px; }
 
-        th:first-child, td:first-child { 
+        tbody td { background-color: var(--row-a); color: #c4d2ea; font-variant-numeric: tabular-nums; }
+        tbody tr:nth-child(even) td { background-color: var(--row-b); }
+
+        th:first-child, td:first-child {
             position: sticky;
             left: 0;
-            background-color: var(--sheet-header-red);
             z-index: 20;
             text-align: center;
         }
-        td:first-child {
-            background-color: var(--card-bg);
-            z-index: 15;
-        }
-        
-        th:nth-child(2), td:nth-child(2) { 
+        td:first-child { z-index: 15; }
+
+        th:nth-child(2), td:nth-child(2) {
             position: sticky;
             left: 30px;
-            background-color: var(--sheet-header-orange);
             z-index: 20;
             text-align: left;
         }
-        td:nth-child(2) { 
-            background-color: var(--sheet-cell-navy);
-            color: var(--sheet-text-white);
+        td:nth-child(2) {
+            color: #ffffff;
             z-index: 15;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
+            padding-left: 8px;
+            border-left: 4px solid #2a3a5c;
         }
+        td:nth-child(2) .arrow { font-size: 10px; margin-right: 4px; }
+        td:nth-child(2) .arrow.up { color: var(--green); }
+        td:nth-child(2) .arrow.down { color: var(--red); }
 
-        /* Colorful data cells, Google-Sheet style */
-        td.cell-order-buy { background-color: #999999; color: #fff; text-align: center; font-weight: 600; }
-        td.cell-order-buy.is-active { background-color: var(--sheet-cell-green); }
-        td.cell-order-sell { background-color: var(--sheet-cell-red); color: #fff; text-align: center; font-weight: 600; }
-        td.cell-order-sell.is-wait { background-color: #999999; }
-        td.cell-btarget { background-color: var(--sheet-cell-green); color: #fff; font-weight: 600; }
-        td.cell-starget { background-color: var(--sheet-cell-red); color: #fff; font-weight: 600; }
-        td.cell-gain { background-color: #ffffff; color: #333; font-weight: 600; }
-        td.cell-dark { background-color: var(--sheet-cell-dark); color: #fff; }
-        td.cell-dark.positive { color: #7cffb2; }
-        td.cell-dark.negative { color: #ff8a80; }
-        td.cell-dark.neutral { color: #ccc; }
-        td.cell-volume-hi { background-color: var(--sheet-cell-lightgreen); color: #fff; font-weight: 600; }
+        /* data cells */
+        td.cell-price { font-weight: 800; font-size: 14px; }
+        td.cell-price.positive { color: #3dff9a; }
+        td.cell-price.negative { color: #ff6b83; }
+        td.cell-price.neutral  { color: #ffffff; }
+
+        td.cell-btarget { background-image: linear-gradient(rgba(34,224,122,.16), rgba(34,224,122,.16)); color: #3dff9a; font-weight: 700; }
+        td.cell-starget { background-image: linear-gradient(rgba(255,77,106,.16), rgba(255,77,106,.16)); color: #ff6b83; font-weight: 700; }
+
+        td.cell-chg.positive { color: #3dff9a; font-weight: 700; }
+        td.cell-chg.negative { color: #ff6b83; font-weight: 700; }
+        td.cell-chg.neutral  { color: #8da2c0; }
+
+        .pill { display: inline-block; min-width: 58px; padding: 3px 8px; border-radius: 12px; font-weight: 800; font-size: 12px; }
+        .pill.positive { background: rgba(34,224,122,.2); color: #3dff9a; border: 1px solid rgba(34,224,122,.55); }
+        .pill.negative { background: rgba(255,77,106,.2); color: #ff7088; border: 1px solid rgba(255,77,106,.55); }
+        .pill.neutral  { background: rgba(141,162,192,.18); color: #b9c8e0; border: 1px solid rgba(141,162,192,.4); }
+
+        td.cell-low  { color: #5fe3f7; font-weight: 600; background-image: linear-gradient(rgba(34,211,238,.08), rgba(34,211,238,.08)); }
+        td.cell-high { color: #ffc766; font-weight: 600; background-image: linear-gradient(rgba(255,176,32,.08), rgba(255,176,32,.08)); }
+        td.cell-diff.positive { color: #3dff9a; }
+        td.cell-diff.negative { color: #ff6b83; }
+        td.cell-diff.neutral  { color: #8da2c0; }
+        td.cell-muted { color: #9db0cf; }
+        td.cell-52h { color: #ff8aa0; }
+        td.cell-52l { color: #5dffa5; }
+
+        td.vol-k  { color: #ffb020; font-weight: 700; }
+        td.vol-l  { color: #6ea8ff; font-weight: 700; }
+        td.vol-hi { color: #22d3ee; font-weight: 800; background-image: linear-gradient(rgba(34,211,238,.18), rgba(34,211,238,.18)); }
+        td.vol-cr { color: #fff; font-weight: 800; background-image: linear-gradient(rgba(79,140,255,.45), rgba(34,211,238,.35)); }
 
         .positive { color: var(--green); font-weight: 600; }
         .negative { color: var(--red); font-weight: 600; }
-        .neutral { color: #666; }
-        
-        tr:hover td {
-            filter: brightness(1.18);
-        }
-        tr:hover td.cell-gain {
-            filter: brightness(0.96);
-        }
+        .neutral { color: var(--muted); }
+
+        /* row colour cues */
+        tbody tr.up-row td:nth-child(2)   { border-left-color: var(--green); }
+        tbody tr.down-row td:nth-child(2) { border-left-color: var(--red); }
+        tbody tr.buy-row td:nth-child(2)  { border-left-color: #22e07a; box-shadow: inset 6px 0 0 -2px #22e07a; }
+        tbody tr.sell-row td:nth-child(2) { border-left-color: #ff4d6a; box-shadow: inset 6px 0 0 -2px #ff4d6a; }
+        tbody tr.buy-row td:first-child  { background-image: linear-gradient(rgba(34,224,122,.25), rgba(34,224,122,.25)); }
+        tbody tr.sell-row td:first-child { background-image: linear-gradient(rgba(255,77,106,.25), rgba(255,77,106,.25)); }
+
+        tr:hover td { filter: brightness(1.35); }
         tr.highlight-row td {
             background-color: var(--highlight) !important;
-            color: #333 !important;
-            font-weight: 600;
+            color: #ffe27a !important;
+            font-weight: 700;
         }
         tr.selected-row td {
             outline: 2px solid var(--purple);
             outline-offset: -2px;
         }
-        tr.buy-row td:nth-child(2) { border-left: 3px solid var(--green); }
-        tr.sell-row td:nth-child(2) { border-left: 3px solid var(--red); }
 
         .right-panel {
             width: 300px;
@@ -381,65 +407,45 @@
         }
 
         .panel-section {
-            background: white;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+            border: 1px solid #243455;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
+        .right-panel .panel-section:nth-child(1) .panel-header { background: linear-gradient(90deg, #0f7a3a, #25D366); color: #04210f; }
+        .right-panel .panel-section:nth-child(2) .panel-header { background: linear-gradient(90deg, #5b2fc0, #b27cff); }
+        .right-panel .panel-section:nth-child(3) .panel-header { background: linear-gradient(90deg, #0b6f87, #22d3ee); color: #03252d; }
 
         .panel-header {
-            background: #2c3e50;
+            background: #16223d;
             color: white;
-            padding: 6px 10px;
-            font-size: 11px;
-            font-weight: 600;
+            padding: 7px 10px;
+            font-size: 12px;
+            font-weight: 700;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .panel-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 8px;
-            max-height: 150px;
-        }
-
-        .panel-large {
-            flex: 1;
-            max-height: none;
-        }
+        .panel-content { flex: 1; overflow-y: auto; padding: 8px; max-height: 150px; }
+        .panel-large { flex: 1; max-height: none; }
 
         .selection-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 4px 6px;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 10px;
+            padding: 5px 6px;
+            border-bottom: 1px solid #1b2742;
+            font-size: 11px;
+            color: #dbe6f7;
         }
-        .selection-item:last-child {
-            border-bottom: none;
-        }
-        .selection-item-name {
-            flex: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .selection-item-value {
-            font-weight: 600;
-            margin-left: 8px;
-        }
-        .selection-item-remove {
-            color: #ff4444;
-            cursor: pointer;
-            font-weight: bold;
-            margin-left: 4px;
-        }
+        .selection-item:last-child { border-bottom: none; }
+        .selection-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .selection-item-value { font-weight: 700; margin-left: 8px; }
+        .selection-item-remove { color: #ff6b83; cursor: pointer; font-weight: bold; margin-left: 4px; }
 
         .whatsapp-buttons {
             display: grid;
@@ -449,22 +455,26 @@
         }
 
         #statusBar {
-            font-size: 9px;
-            color: #666;
-            padding: 4px 12px;
-            background: white;
+            font-size: 10px;
+            color: var(--muted);
+            padding: 5px 12px;
+            background: #0b1120;
             border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
         }
+        #statusText { color: #3dff9a; font-weight: 700; }
+        #rowCount { color: #ffd23f; font-weight: 700; }
+        #lastUpdate { color: #5fe3f7; }
+        #viewInfo { color: #cfa8ff; }
 
-        #loading { 
-            text-align: center; 
-            padding: 20px; 
-            color: #666; 
-            font-weight: 600; 
+        #loading {
+            text-align: center;
+            padding: 20px;
+            color: #b9c8e0;
+            font-weight: 600;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -472,57 +482,51 @@
             align-items: center;
         }
         .spinner {
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid var(--blue);
+            border: 3px solid #1e2a44;
+            border-top: 3px solid var(--cyan);
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             animation: spin 1s linear infinite;
             margin-bottom: 8px;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         #toast {
-            visibility: hidden; 
-            min-width: 200px; 
-            background-color: #333; 
+            visibility: hidden;
+            min-width: 200px;
+            background-color: #1b2748;
             color: #fff;
-            text-align: center; 
-            border-radius: 4px; 
+            border: 1px solid #4f8cff;
+            text-align: center;
+            border-radius: 6px;
             padding: 8px;
-            position: fixed; 
-            z-index: 1000; 
-            left: 50%; 
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
             bottom: 20px;
-            transform: translateX(-50%); 
+            transform: translateX(-50%);
             font-size: 12px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.6);
         }
-        #toast.show { 
-            visibility: visible; 
-            animation: fadein 0.3s, fadeout 0.3s 2s; 
-        }
-        @keyframes fadein { 
-            from {bottom: 0; opacity: 0;} 
-            to {bottom: 20px; opacity: 1;} 
-        }
-        @keyframes fadeout { 
-            from {bottom: 20px; opacity: 1;} 
-            to {bottom: 0; opacity: 0;} 
-        }
+        #toast.show { visibility: visible; animation: fadein 0.3s, fadeout 0.3s 2s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 20px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 20px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
         .selection-counter {
             background: var(--purple);
-            color: white;
-            padding: 1px 4px;
+            color: #1a0b3a;
+            padding: 1px 5px;
             border-radius: 8px;
             font-size: 9px;
-            font-weight: 600;
+            font-weight: 800;
             margin-left: 3px;
         }
+
+        /* Settings modal (dark) */
+        #settingsModal > div { background: #0f1729 !important; color: #e6edf7; border: 1px solid #4f8cff; box-shadow: 0 0 30px rgba(79,140,255,.35); }
+        #settingsModal p, #settingsModal label { color: #9db0cf !important; }
+        #settingsModal input { background: #0a0f1d !important; color: #fff !important; border: 1px solid #2a3a5c !important; }
 
         @media print {
             body {
@@ -576,6 +580,9 @@
                 position: static !important;
                 left: auto !important;
             }
+            .pill { background: none !important; border: none !important; color: black !important; }
+            .arrow { display: none; }
+            td { background-image: none !important; }
             .positive { color: black !important; font-weight: bold; }
             .negative { color: black !important; font-weight: bold; }
             input[type="checkbox"] { display: none; }
@@ -627,9 +634,9 @@
             <span class="quick-filter-btn" onclick="quickFilter('volume')">💹 வால்யூம்</span>
         </div>
         <button class="btn-refresh" onclick="loadData()">🔄 புதுப்பி</button>
-        <button class="btn-view-toggle" onclick="toggleView()">👁️ பார்வை</button>
+        <button class="btn-view" onclick="toggleView()">👁️ பார்வை</button>
         <button id="autoToggleBtn" class="btn-view-toggle" onclick="toggleAutoRefresh()">⏸️ ஆட்டோ ஆஃப்</button>
-        <button class="btn-view-toggle" onclick="openSettings()">⚙️ Setup</button>
+        <button class="btn-setup" onclick="openSettings()">⚙️ Setup</button>
     </div>
 
     <div id="settingsModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:2000; align-items:center; justify-content:center;">
@@ -726,7 +733,7 @@
                     <button class="btn-clear" onclick="clearSelections()" style="padding: 2px 6px; font-size: 9px;">❌ நீக்கு</button>
                 </div>
                 <div class="panel-content" id="selectedStocksPanel">
-                    <div style="color: #666; text-align: center; padding: 10px;">தேர்ந்தெடுக்கப்பட்ட பங்குகள் இல்லை</div>
+                    <div style="color: #8da2c0; text-align: center; padding: 10px;">தேர்ந்தெடுக்கப்பட்ட பங்குகள் இல்லை</div>
                 </div>
             </div>
 
@@ -966,7 +973,7 @@
                 td.colSpan = 15;
                 td.style.textAlign = 'center';
                 td.style.padding = '20px';
-                td.style.color = '#666';
+                td.style.color = '#8da2c0';
                 td.innerHTML = searchTerm ? `"${searchTerm}"க்கு தரவு இல்லை` : 'தரவு கிடைக்கவில்லை';
                 tr.appendChild(td);
                 tbody.appendChild(tr);
@@ -976,6 +983,8 @@
             displayData.forEach((row, index) => {
                 const tr = document.createElement('tr');
                 if (selectedStocks.has(row.id)) tr.classList.add('selected-row');
+                if (parseFloat(row.percent) > 0) tr.classList.add('up-row');
+                else if (parseFloat(row.percent) < 0) tr.classList.add('down-row');
                 if (row.orderBuy === 'buy') tr.classList.add('buy-row');
                 if (row.orderSell === 'sell') tr.classList.add('sell-row');
                 
@@ -1000,7 +1009,9 @@
 
                 // Stock Name
                 const tdStock = document.createElement('td');
-                tdStock.innerHTML = `<strong>${row.stock}</strong>`;
+                const arrowCls = parseFloat(row.percent) > 0 ? 'up' : (parseFloat(row.percent) < 0 ? 'down' : '');
+                const arrowCh = arrowCls === 'up' ? '▲' : (arrowCls === 'down' ? '▼' : '●');
+                tdStock.innerHTML = `<span class="arrow ${arrowCls}">${arrowCh}</span><strong>${row.stock}</strong>`;
                 tdStock.title = 'கிளிக் செய்து பங்கின் பெயரை காப்பி செய்யவும்';
                 tdStock.onclick = () => {
                     copyStockName(row.stock);
@@ -1011,7 +1022,7 @@
                 // Price
                 const tdPrice = document.createElement('td');
                 tdPrice.innerText = row.price.toFixed(2);
-                tdPrice.className = 'cell-dark ' + getColorClass(row.price);
+                tdPrice.className = 'cell-price ' + getColorClass(row.change);
                 tr.appendChild(tdPrice);
 
                 // B TARGET
@@ -1028,62 +1039,61 @@
 
                 // Change
                 const tdChange = document.createElement('td');
-                tdChange.innerText = row.change.toFixed(2);
-                tdChange.className = 'cell-dark ' + getColorClass(row.change);
+                tdChange.innerText = (row.change > 0 ? '+' : '') + row.change.toFixed(2);
+                tdChange.className = 'cell-chg ' + getColorClass(row.change);
                 tr.appendChild(tdChange);
 
                 // Percent
                 const tdPercent = document.createElement('td');
-                tdPercent.innerText = `${row.percent.toFixed(2)}%`;
-                tdPercent.className = 'cell-dark ' + getColorClass(row.percent);
+                tdPercent.innerHTML = `<span class="pill ${getColorClass(row.percent)}">${row.percent > 0 ? '+' : ''}${row.percent.toFixed(2)}%</span>`;
                 tr.appendChild(tdPercent);
 
                 // Low
                 const tdLow = document.createElement('td');
                 tdLow.innerText = row.low.toFixed(2);
-                tdLow.className = 'cell-dark neutral';
+                tdLow.className = 'cell-low';
                 tr.appendChild(tdLow);
 
                 // Diff Low
                 const tdDiffLow = document.createElement('td');
                 tdDiffLow.innerText = row.diffLow.toFixed(2);
-                tdDiffLow.className = 'cell-dark ' + getColorClass(row.diffLow);
+                tdDiffLow.className = 'cell-diff ' + getColorClass(row.diffLow);
                 tr.appendChild(tdDiffLow);
 
                 // High
                 const tdHigh = document.createElement('td');
                 tdHigh.innerText = row.high.toFixed(2);
-                tdHigh.className = 'cell-dark neutral';
+                tdHigh.className = 'cell-high';
                 tr.appendChild(tdHigh);
 
                 // Volume
                 const tdVol = document.createElement('td');
                 tdVol.innerText = formatVolume(row.volume);
-                tdVol.className = row.volume >= 1000000 ? 'cell-volume-hi' : 'cell-dark neutral';
+                tdVol.className = row.volume >= 10000000 ? 'vol-cr' : (row.volume >= 1000000 ? 'vol-hi' : (row.volume >= 100000 ? 'vol-l' : 'vol-k'));
                 tr.appendChild(tdVol);
 
                 // Close
                 const tdClose = document.createElement('td');
                 tdClose.innerText = row.close.toFixed(2);
-                tdClose.className = 'cell-dark neutral';
+                tdClose.className = 'cell-muted';
                 tr.appendChild(tdClose);
 
                 // Open
                 const tdOpen = document.createElement('td');
                 tdOpen.innerText = row.open.toFixed(2);
-                tdOpen.className = 'cell-dark neutral';
+                tdOpen.className = 'cell-muted';
                 tr.appendChild(tdOpen);
 
                 // 52 Week High
                 const td52High = document.createElement('td');
                 td52High.innerText = row.high52;
-                td52High.className = 'cell-dark neutral';
+                td52High.className = 'cell-52h';
                 tr.appendChild(td52High);
 
                 // 52 Week Low
                 const td52Low = document.createElement('td');
                 td52Low.innerText = row.low52;
-                td52Low.className = 'cell-dark neutral';
+                td52Low.className = 'cell-52l';
                 tr.appendChild(td52Low);
 
                 tbody.appendChild(tr);
